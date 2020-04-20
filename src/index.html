@@ -2,12 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ElectronAssignment</title>
-  <base href="/">
+  <title>electron-assignment</title>
+  <base href="./">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <app-root></app-root>
 </body>
+
+<script language="javascript" type="text/javascript">
+  //this code handles the F5/Ctrl+F5/Ctrl+R
+  document.onkeydown = checkKeycode
+  function checkKeycode(e) {
+      var keycode;
+      if (window.event)
+          keycode = window.event.keyCode;
+      else if (e)
+          keycode = e.which;
+
+      // Mozilla firefox
+      if ($.browser.mozilla) {
+          if (keycode == 116 ||(e.ctrlKey && keycode == 82)) {
+              if (e.preventDefault)
+              {
+                  e.preventDefault();
+                  e.stopPropagation();
+              }
+          }
+      }
+      // IE
+      else if ($.browser.msie) {
+          if (keycode == 116 || (window.event.ctrlKey && keycode == 82)) {
+              window.event.returnValue = false;
+              window.event.keyCode = 0;
+              window.status = "Refresh is disabled";
+          }
+      }
+  }
+</script>
 </html>

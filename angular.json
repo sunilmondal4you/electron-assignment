@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/electron-assignment",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "electron-assignment"
+    }
+  },
+  "defaultProject": "electron-assignment",
+  "cli": {
+    "analytics": "90a147fb-97cf-42cb-b004-602ce93f0531"
+  }
 }

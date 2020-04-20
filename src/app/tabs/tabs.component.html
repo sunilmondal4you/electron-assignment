@@ -1,0 +1,21 @@
+<div class="tab-container h-100" role="tabpanel">
+  <div class=" row col-12 top-nav ml-0 pl-0">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" *ngFor="let aTab of addedTabs; let i=index;" (click)="selectTab(i)" class="nav-item" [class.active]="selectedTab == i">
+          <a data-target="#tab" aria-controls="home" role="tab" data-toggle="tab" class="nav-link" >View {{aTab.id}} <span (click)="deleteTab(i)" class="fa fa-close" *ngIf="addedTabs?.length > 1"></span></a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="remainingTabs?.length > 0">
+          <a class="nav-link dropdown-toggle fa fa-plus" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" (click)="showSubMenu()">&nbsp;</a>
+          <div class="dropdown-menu" [class.show]="showSubMenuFlag">
+            <a class="dropdown-item" *ngFor="let rTab of remainingTabs; let j=index;" (click)="addTab(j)">View {{rTab.id}}</a>
+          </div>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content" (click)="showSubMenuFlag=false">
+      <div role="tabpanel" class="tab-pane active" id="tab">
+          <h3>Tab {{addedTabs[selectedTab].id}}</h3>
+          <p>{{addedTabs[selectedTab].content}}</p>
+      </div>
+  </div>
+</div>
